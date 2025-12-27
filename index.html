@@ -1,0 +1,1571 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Retail Therapy PH — K‑Pop Group Orders</title>
+  <meta name="description" content="Retail Therapy PH — a cute but clean K‑pop group order shop: open listings, order form, and order status lookup." />
+
+  <!--
+    ✅ IMAGE SETUP (keep these files in the SAME folder as this index.html)
+
+    Your current filenames include SPACES. Browsers can load them fine, but %20 encoding can be annoying.
+    This template will use the real filenames with spaces (recommended for local files):
+      - facebook banner.png
+      - logo ver flat.png
+      - social logo_with border.png
+      - ella avatar.png
+
+    If you rename to no-spaces (e.g., facebook-banner.png), update the 4 paths below.
+  -->
+
+  <style>
+    :root{
+      /* Retail Therapy PH — pastel, cute but clean */
+      --bg:#fff5f8;
+      --panel:#ffffff;
+      --panel2:#fff0f6;
+      --text:#231b2a;
+      --muted:#6e6376;
+      --brand:#ff6fa1;   /* pink */
+      --brand2:#ffd166;  /* soft yellow */
+      --ok:#21b573;
+      --warn:#ffb020;
+      --danger:#ff4d6d;
+      --shadow: 0 18px 50px rgba(30, 10, 30, .14);
+      --radius: 18px;
+      --radius2: 28px;
+      --max: 1120px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--text);
+      line-height:1.45;
+      background:
+        radial-gradient(900px 450px at 15% 0%, rgba(255,111,161,.18), transparent 60%),
+        radial-gradient(850px 420px at 90% 8%, rgba(255,209,102,.22), transparent 55%),
+        radial-gradient(700px 420px at 50% 100%, rgba(255,111,161,.10), transparent 60%),
+        var(--bg);
+    }
+
+    a{color:inherit; text-decoration:none}
+    button{
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      color:#2b1b1b;
+      font-weight:900;
+      box-shadow: 0 10px 28px rgba(0,0,0,.25);
+      border:none;
+      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+    }
+    button:hover{
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 16px 40px rgba(0,0,0,.35);
+      filter: brightness(1.05);
+    }, input, select, textarea{font:inherit; color:inherit}
+
+    .container{max-width:var(--max); margin:0 auto; padding:0 18px}
+
+    /* Top bar */
+    header{
+      position:absolute;
+      inset:0 0 auto 0;
+      z-index:40;
+      background: transparent;
+      border-bottom:none;
+      pointer-events:none;
+    }
+    .topbar{
+      pointer-events:auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:10px 14px;
+      margin:12px auto;
+      border-radius: 22px;
+      max-width: var(--max);
+      background: rgba(255,255,255,.35);
+      border: 1px solid rgba(35,27,42,.10);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 26px rgba(30,10,30,.10);
+    }
+    .topbar *{
+      text-shadow: 0 1px 2px rgba(0,0,0,.20);
+    }
+
+    .logo{
+      display:flex; align-items:center; gap:10px;
+      font-weight:900;
+      letter-spacing:.2px;
+      white-space:nowrap;
+    }
+    .logoImg{
+      width:38px; height:38px;
+      border-radius: 14px;
+      object-fit: cover;
+      box-shadow: 0 10px 22px rgba(255,111,161,.20);
+      border: 1px solid rgba(35,27,42,.08);
+      background: #fff;
+    }
+    .brandText{display:flex; flex-direction:column; line-height:1.05}
+    .brandText small{font-weight:700; color:var(--muted)}
+
+    nav{margin-left:auto; display:flex; gap:10px; align-items:center}
+    .navlink{
+      padding:10px 12px;
+      border-radius:12px;
+      color:var(--muted);
+      font-weight:800;
+    }
+    .navlink:hover{background:rgba(255,111,161,.10); color:var(--text)}
+
+    /* Social links (header) */
+    .socials{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-left:12px;
+    }
+    .socials a{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      background: rgba(255,255,255,.84);
+      border: 1px solid rgba(35,27,42,.10);
+      box-shadow: 0 8px 18px rgba(30,10,30,.08);
+      color: var(--text);
+      font-weight:900;
+      font-size:12px;
+      transition: transform .22s ease, box-shadow .22s ease, background .22s ease;
+      white-space:nowrap;
+    }
+    .socials a:hover{
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 14px 30px rgba(30,10,30,.18);
+      background: #fff;
+    }
+    .socials a:active{
+      transform: translateY(-1px) scale(.98);
+      box-shadow: 0 8px 18px rgba(30,10,30,.14);
+    }
+
+    .pill{
+      padding:10px 12px;
+      border:1px solid rgba(35,27,42,.10);
+      border-radius:999px;
+      background:rgba(255,255,255,.84);
+      color:var(--text);
+      display:flex; align-items:center; gap:8px;
+      box-shadow: 0 10px 24px rgba(30, 10, 30, .08);
+      cursor:pointer;
+      margin-left:auto;
+      white-space:nowrap;
+    }
+
+    /* Hero */
+    .hero{
+      padding: 130px 0 18px; /* more space so hero content starts BELOW header/social bar */ /* space for overlay header */
+      min-height: 460px;
+      position: relative;
+      background-image:
+        linear-gradient(180deg, rgba(255,245,248,.90) 0%, rgba(255,245,248,.60) 40%, rgba(255,245,248,.25) 72%, rgba(255,245,248,.10) 100%),
+        url("facebook banner.png");
+      background-size: cover;
+      background-position: top center;
+      background-repeat:no-repeat;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(900px 420px at 10% 10%, rgba(255,111,161,.10), transparent 60%),
+        radial-gradient(850px 420px at 90% 10%, rgba(255,209,102,.12), transparent 55%);
+      pointer-events:none;
+    }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:16px;
+      align-items:stretch;
+    }
+
+    .card{
+      background: var(--panel);
+      border: 1px solid rgba(35,27,42,.10);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+    }
+
+    .heroMain{
+      padding:18px 18px 16px;
+      position:relative;
+      overflow:hidden;
+      min-height: 260px;
+      background: rgba(255,255,255,.08); /* nearly transparent */
+      backdrop-filter: blur(4px);
+      box-shadow: none;
+    }
+    .heroMain *{
+      text-shadow: 0 2px 6px rgba(0,0,0,.45);
+    }
+    .heroMain *{
+      text-shadow: 0 1px 2px rgba(0,0,0,.22);
+    }
+
+    .heroTitle{font-size: clamp(26px, 3.2vw, 44px); line-height:1.08; margin:0 0 8px; letter-spacing:-.6px}
+    .heroTitle span{color: var(--brand)}
+    .heroSub{margin:0 0 14px; color:var(--muted); max-width:62ch; font-weight:600}
+
+    .actions{display:flex; flex-wrap:wrap; gap:10px; align-items:center}
+
+    .btn{
+      border:none;
+      cursor:pointer;
+      border-radius: 14px;
+      padding: 11px 14px;
+      background: rgba(255,111,161,.10);
+      border: 1px solid rgba(255,111,161,.18);
+      color: var(--text);
+      display:inline-flex; align-items:center; gap:9px;
+      transition: transform .08s ease, background .12s ease;
+      font-weight:800;
+    }
+    .btn:hover{background: rgba(255,111,161,.14)}
+    .btn:active{transform: translateY(1px)}
+
+    .btnPrimary{
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      border-color: rgba(35,27,42,.10);
+      color:#1b1221;
+      box-shadow: 0 14px 30px rgba(255,111,161,.20);
+    }
+    .btnPrimary:hover{filter: brightness(1.02)}
+
+    .mini{
+      font-size:12px; color:var(--muted);
+      display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+      margin-top:12px;
+      font-weight:600;
+    }
+    .dot{width:6px;height:6px;border-radius:99px;background:rgba(35,27,42,.25)}
+
+    .heroSide{
+      padding:16px;
+      background: rgba(255,255,255,.08);
+      backdrop-filter: blur(4px);
+      border-radius: var(--radius2);
+      box-shadow:none;
+    }
+    .heroSide *{
+      text-shadow: 0 2px 6px rgba(0,0,0,.45);
+    }
+    .heroSide *{
+      text-shadow: 0 1px 2px rgba(0,0,0,.22);
+    }
+    .kpiRow{display:grid; grid-template-columns: 1fr 1fr; gap:10px}
+    .kpi{
+      background: rgba(255,111,161,.06);
+      border: 1px solid rgba(35,27,42,.10);
+      border-radius: var(--radius);
+      padding: 12px;
+    }
+    .kpi b{font-size:18px}
+    .kpi span{display:block; color:var(--muted); font-size:12px; margin-top:4px; font-weight:700}
+
+    /* Search + filters */
+    .toolbar{display:flex; flex-wrap:wrap; gap:10px; align-items:center; padding:12px 0 6px}
+    .field{
+      flex: 1 1 320px;
+      display:flex; align-items:center; gap:10px;
+      background: rgba(255,255,255,.85);
+      border: 1px solid rgba(35,27,42,.10);
+      border-radius: 14px;
+      padding: 10px 12px;
+      box-shadow: 0 10px 22px rgba(30,10,30,.06);
+    }
+    .field input{width:100%; border:0; background:transparent; outline:none}
+
+    .select{
+      flex: 0 0 auto;
+      background: rgba(255,255,255,.85);
+      border: 1px solid rgba(35,27,42,.10);
+      border-radius: 14px;
+      padding: 10px 12px;
+      outline:none;
+      box-shadow: 0 10px 22px rgba(30,10,30,.06);
+      font-weight:700;
+      color: var(--text);
+    }
+
+    /* Grid */
+    .grid{display:grid; grid-template-columns: repeat(12, 1fr); gap:14px; padding:12px 0 22px}
+    .tile{
+      grid-column: span 4;
+      background: transparent; /* fully transparent cards */
+      border: none;
+      border-radius: var(--radius2);
+      overflow:hidden;
+      display:flex; flex-direction:column;
+      min-height: 260px;
+      box-shadow:none;
+    }
+    .tile *{
+      text-shadow: 0 2px 6px rgba(0,0,0,.45);
+    }
+    .tile *{
+      text-shadow: 0 1px 2px rgba(0,0,0,.22);
+    }
+
+    .thumb{
+      height: 132px;
+      background:
+        linear-gradient(135deg, rgba(255,111,161,.30), rgba(255,209,102,.35));
+      position:relative;
+    }
+    .thumb::after{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(420px 220px at 30% 30%, rgba(255,255,255,.55), transparent 62%),
+        radial-gradient(340px 220px at 80% 40%, rgba(255,255,255,.40), transparent 60%);
+      opacity:.9;
+    }
+
+    .badge{
+      position:absolute; top:10px; left:10px;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(35,27,42,.10);
+      color: var(--text);
+      display:inline-flex; gap:8px; align-items:center;
+      font-weight:800;
+      backdrop-filter: blur(10px);
+    }
+
+    .statusDot{width:8px;height:8px;border-radius:99px;background:var(--ok)}
+    .statusDot.closing{background:var(--warn)}
+    .statusDot.closed{background:var(--danger)}
+
+    .tileBody{padding:14px 14px 10px; display:flex; flex-direction:column; gap:10px; flex:1}
+    .tile h3{margin:0; font-size:16px; letter-spacing:-.2px}
+    .meta{color:var(--muted); font-size:12px; display:flex; gap:10px; flex-wrap:wrap; font-weight:700}
+    .meta code{font-family:var(--mono); font-size:11px; padding:2px 6px; border-radius:999px; background:rgba(255,111,161,.08); border:1px solid rgba(255,111,161,.16)}
+
+    .progressWrap{display:flex; gap:10px; align-items:center}
+    .bar{height:10px; flex:1; background:rgba(35,27,42,.07); border-radius:999px; overflow:hidden; border:1px solid rgba(35,27,42,.10)}
+    .bar > i{display:block; height:100%; width:50%; background: linear-gradient(90deg, var(--brand), var(--brand2))}
+    .pct{font-size:12px; color:var(--muted); font-weight:800}
+
+    .tileFooter{display:flex; gap:10px; align-items:center; justify-content:space-between; padding: 0 14px 14px}
+    .price{font-weight:900}
+    .small{font-size:12px; color:var(--muted); font-weight:700}
+
+    /* Sections */
+    .sectionTitle{margin:0 0 8px; letter-spacing:-.3px}
+
+    /* Modals */
+    dialog{
+      width:min(780px, calc(100vw - 26px));
+      border:none;
+      border-radius: 24px;
+      background: rgba(255,255,255,.96);
+      color: var(--text);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(35,27,42,.12);
+      padding:0;
+    }
+    dialog::backdrop{background: rgba(10, 6, 14, .55)}
+
+    .modalHead{display:flex; align-items:flex-start; justify-content:space-between; gap:12px; padding:16px 16px 12px; border-bottom:1px solid rgba(35,27,42,.10)}
+    .modalTitle{margin:0; font-size:16px}
+    .closeX{background:rgba(255,111,161,.10); border:1px solid rgba(255,111,161,.18); border-radius:12px; padding:8px 10px; cursor:pointer; font-weight:900}
+    .modalBody{padding:16px}
+
+    .twoCol{display:grid; grid-template-columns: 1fr 1fr; gap:14px}
+    .panel{
+      background: rgba(255,111,161,.06);
+      border: 1px solid rgba(35,27,42,.10);
+      border-radius: 18px;
+      padding: 14px;
+    }
+    .panel h4{margin:0 0 10px; font-size:14px}
+
+    .formGrid{display:grid; grid-template-columns: 1fr 1fr; gap:10px}
+    .formGrid .full{grid-column: 1 / -1}
+    label{display:block; font-size:12px; color:var(--muted); margin-bottom:6px; font-weight:800}
+
+    .inp{
+      width:100%;
+      background: rgba(255,255,255,.92);
+      border: 1px solid rgba(35,27,42,.12);
+      border-radius: 14px;
+      padding: 10px 12px;
+      outline:none;
+      box-shadow: 0 10px 22px rgba(30,10,30,.05);
+    }
+    .inp:focus{border-color: rgba(255,111,161,.55); box-shadow: 0 0 0 4px rgba(255,111,161,.15)}
+
+    .notice{font-size:12px; color:var(--muted); margin-top:8px; font-weight:650}
+    .notice b{color:var(--text)}
+
+    /* Order status list */
+    .statusList{display:grid; gap:10px; margin-top:12px}
+    .statusItem{
+      background: rgba(255,255,255,.90);
+      border: 1px solid rgba(35,27,42,.10);
+      border-radius: 16px;
+      padding: 12px;
+      box-shadow: 0 12px 24px rgba(30,10,30,.06);
+      display:grid;
+      gap:6px;
+    }
+    .statusItem b{font-size:13px}
+    .statusChips{display:flex; flex-wrap:wrap; gap:8px}
+    .chip{font-family:var(--mono); font-size:11px; padding:2px 8px; border-radius:999px; border:1px solid rgba(35,27,42,.10); background: rgba(255,111,161,.06)}
+
+    /* Checkout drawer */
+    .drawer{
+      position:fixed; inset:0 0 0 auto;
+      width:min(420px, 100%);
+      transform: translateX(110%);
+      transition: transform .22s ease;
+      background: rgba(255,255,255,.96);
+      border-left:1px solid rgba(35,27,42,.12);
+      box-shadow: var(--shadow);
+      z-index: 50;
+      display:flex; flex-direction:column;
+    }
+    .drawer.open{transform: translateX(0)}
+    .drawerHead{padding:14px 14px 10px; display:flex; align-items:center; justify-content:space-between; gap:10px; border-bottom:1px solid rgba(35,27,42,.10)}
+    .drawerHead h3{margin:0; font-size:16px}
+    .drawerBody{padding:12px 14px; overflow:auto; flex:1}
+    .drawerFoot{padding:12px 14px 14px; border-top:1px solid rgba(35,27,42,.10)}
+
+    .cartItem{display:grid; grid-template-columns: 1fr auto; gap:8px; padding:10px 0; border-bottom:1px dashed rgba(35,27,42,.18)}
+    .cartItem:last-child{border-bottom:none}
+    .cartItem b{font-size:13px}
+    .cartItem span{display:block; font-size:12px; color:var(--muted)}
+    .qtyRow{display:flex; gap:8px; align-items:center; justify-content:flex-end}
+    .qtyBtn{width:30px;height:30px;border-radius:10px;background:rgba(255,111,161,.10);border:1px solid rgba(255,111,161,.18); cursor:pointer; font-weight:900}
+
+    .totals{display:grid; gap:8px; font-size:13px}
+    .totals .row{display:flex; justify-content:space-between; color:var(--muted); font-weight:800}
+    .totals .row strong{color:var(--text)}
+
+    footer{padding:26px 0 40px; color:var(--muted)}
+    .footGrid{display:grid; grid-template-columns: 1.2fr .8fr; gap:14px}
+    .footCard{padding:16px}
+    .footCard h4{margin:0 0 10px; color:var(--text)}
+    .footCard p{margin:0 0 8px}
+    .kbd{font-family:var(--mono); font-size:11px; padding:2px 6px; border-radius:10px; background:rgba(255,111,161,.08); border:1px solid rgba(255,111,161,.16)}
+
+    /* Tiny test badge */
+    .testBadge{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; background:rgba(255,111,161,.08); border:1px solid rgba(255,111,161,.16)}
+    .testBadge b{color:var(--text)}
+    .testDot{width:8px;height:8px;border-radius:99px;background:var(--ok)}
+    .testDot.fail{background:var(--danger)}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .heroGrid{grid-template-columns:1fr}
+      .tile{grid-column: span 6}
+      nav{display:none}
+      .topbar{
+        flex-wrap:wrap;
+        gap:10px;
+      }
+      .socials{
+        width:100%;
+        justify-content:center;
+        margin-left:0;
+      }
+      .pill{
+        margin-left:0;
+      }
+    }
+      .tile{grid-column: span 6}
+      nav{display:none}
+      .topbar{flex-wrap:wrap}
+      .socials{order: 3; width:100%}
+      .pill{margin-left:0}
+    }
+    @media (max-width: 620px){
+      .tile{grid-column: span 12}
+      .twoCol{grid-template-columns:1fr}
+      .formGrid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container topbar">
+    <a class="logo" href="#" aria-label="Home">
+      <img class="logoImg" src="social logo_with border.png" alt="Retail Therapy PH logo" />
+      <span class="brandText">
+        <span>Retail Therapy PH</span>
+        <small>K‑Pop Group Orders</small>
+      </span>
+    </a>
+
+    <nav aria-label="Primary">
+      <a class="navlink" href="#open">Open GOs</a>
+      <a class="navlink" href="#status">Order Status</a>
+      <a class="navlink" href="#how">How it works</a>
+      <a class="navlink" href="#faq">FAQ</a>
+    </nav>
+
+    <div class="socials" aria-label="Social links">
+      <a href="#" target="_blank" rel="noopener">📘 Facebook</a>
+      <a href="#" target="_blank" rel="noopener">📸 Instagram</a>
+      <a href="#" target="_blank" rel="noopener">🎵 TikTok</a>
+      <a href="#" target="_blank" rel="noopener">𝕏 X</a>
+    </div>
+
+    <button class="pill" id="cartBtn" type="button" aria-label="Open cart">
+      <span aria-hidden="true">🛒</span>
+      <span>Cart</span>
+      <b id="cartCount">0</b>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container heroGrid">
+      <div class="card heroMain" aria-label="Retail Therapy PH hero">
+        <h1 class="heroTitle">Your happy place for <span>Group Orders</span>.</h1>
+        <p class="heroSub">Albums, merch, and collectibles — organized by cut‑off dates, slots, and easy order tracking. (This is a front‑end starter that saves data on your device.)</p>
+        <div class="actions">
+          <button class="btn btnPrimary" type="button" id="browseBtn">✨ Browse Open GOs</button>
+          <a class="btn" href="#status">🧾 Check Order Status</a>
+          <button class="btn" type="button" id="newGoBtn">➕ Create a GO Listing</button>
+        </div>
+        <div class="mini">
+          <span class="kbd">Tip</span> Replace the sample listings in the JS section.
+          <span class="dot" aria-hidden="true"></span>
+          Put your policy text in <span class="kbd">Notes</span> per listing.
+        </div>
+      </div>
+
+      <aside class="card heroSide" aria-label="Quick stats">
+        <div class="kpiRow">
+          <div class="kpi"><b id="kpiOpen">0</b><span>Open GOs</span></div>
+          <div class="kpi"><b id="kpiSoon">0</b><span>Closing soon (≤ 3 days)</span></div>
+          <div class="kpi"><b id="kpiItems">0</b><span>Items in cart</span></div>
+          <div class="kpi"><b id="kpiEst">₱0</b><span>Estimated total</span></div>
+        </div>
+        <div class="notice" style="margin-top:12px">
+          <b>Admin note:</b> This template includes open listings, an order form, CSV export, and order status lookup.
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="container" id="open" aria-label="Open group orders">
+    <h2 class="sectionTitle">Open Group Orders</h2>
+    <div class="toolbar">
+      <div class="field" role="search">
+        <span aria-hidden="true">🔎</span>
+        <input id="search" placeholder="Search by group, comeback, item, benefit…" autocomplete="off" />
+      </div>
+      <select class="select" id="statusFilter" aria-label="Status filter">
+        <option value="all">All statuses</option>
+        <option value="open">Open</option>
+        <option value="closing">Closing soon</option>
+        <option value="closed">Closed</option>
+      </select>
+      <select class="select" id="sortBy" aria-label="Sort">
+        <option value="cutoffSoon">Sort: Cut‑off soonest</option>
+        <option value="newest">Sort: Newest</option>
+        <option value="priceLow">Sort: Price low → high</option>
+        <option value="priceHigh">Sort: Price high → low</option>
+      </select>
+    </div>
+
+    <div class="grid" id="grid" aria-live="polite"></div>
+  </section>
+
+  <section class="container" id="status" aria-label="Order Status" style="padding-top:10px">
+    <div class="card" style="padding:18px">
+      <h2 class="sectionTitle">Order Status</h2>
+      <p class="notice" style="margin-top:0">Enter the <b>same email</b> you used when submitting your order. (Local demo: this shows orders saved on this device.)</p>
+
+      <div class="twoCol" style="margin-top:12px">
+        <div class="panel">
+          <h4>Lookup</h4>
+          <div class="formGrid">
+            <div class="full">
+              <label for="statusEmail">Email used in order</label>
+              <input class="inp" id="statusEmail" type="email" placeholder="you@email.com" />
+            </div>
+          </div>
+          <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap; align-items:center">
+            <button class="btn btnPrimary" type="button" id="statusBtn">Check status</button>
+            <button class="btn" type="button" id="statusClear">Clear</button>
+            <span class="notice" id="statusMsg" role="status"></span>
+          </div>
+          <p class="notice"><b>Note:</b> For a real online shop, connect this to a database so buyers can check status from any device.</p>
+        </div>
+
+        <div class="panel">
+          <h4>Results</h4>
+          <div id="statusResults" class="statusList">
+            <p class="notice" style="margin:0">No lookup yet.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container" id="how" aria-label="How it works" style="padding-top:12px">
+    <div class="card" style="padding:18px">
+      <h2 class="sectionTitle">How group orders work</h2>
+      <div class="twoCol">
+        <div class="panel">
+          <h4>For buyers</h4>
+          <ol style="margin:0; padding-left:18px; color:var(--muted); font-weight:700">
+            <li>Pick an open listing (album/merch/photocard set).</li>
+            <li>Submit your details + quantity and pay (DP/FP if applicable).</li>
+            <li>Check updates + shipping after the GO closes.</li>
+          </ol>
+        </div>
+        <div class="panel">
+          <h4>For GO managers</h4>
+          <ol style="margin:0; padding-left:18px; color:var(--muted); font-weight:700">
+            <li>Create listings with price, cut‑off, slots, and benefits.</li>
+            <li>Track orders (export CSV), collect balances, manage allocation.</li>
+            <li>Dispatch to buyers: meetup, courier, or LBC/J&T/etc.</li>
+          </ol>
+          <p class="notice">This starter uses <b>localStorage</b>. For real operations, connect a backend (Firebase/Supabase) + payment verification.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container" id="faq" aria-label="FAQ" style="padding-top:14px">
+    <div class="card" style="padding:18px">
+      <h2 class="sectionTitle">FAQ</h2>
+      <details class="panel" style="margin:10px 0">
+        <summary style="cursor:pointer; font-weight:900">Do you support downpayment / full payment?</summary>
+        <p class="notice">Yes — each listing can show DP/FP notes. This demo doesn’t validate payments yet.</p>
+      </details>
+      <details class="panel" style="margin:10px 0">
+        <summary style="cursor:pointer; font-weight:900">Can I export orders?</summary>
+        <p class="notice">Yes — use the CSV export button inside each listing modal (orders saved locally).</p>
+      </details>
+      <details class="panel" style="margin:10px 0">
+        <summary style="cursor:pointer; font-weight:900">How do I put this online?</summary>
+        <p class="notice">Upload <b>index.html</b> + the image files to GitHub Pages / Netlify / Vercel.</p>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footGrid">
+    <div class="card footCard">
+      <h4>Retail Therapy PH — admin notes</h4>
+      <p>✅ Replace sample GOs with your real listings.</p>
+      <p>✅ Add your policies: refunds, unclaimed items, late payment, shipping schedule.</p>
+      <p class="notice">Keyboard shortcuts: <span class="kbd">/</span> focus search · <span class="kbd">Esc</span> close modals/drawer</p>
+      <p class="notice">Self-tests: <span class="testBadge"><span id="testDot" class="testDot" aria-hidden="true"></span><b id="testLabel">Running…</b></span></p>
+    </div>
+    <div class="card footCard">
+      <h4>Quick links</h4>
+      <p><a class="navlink" href="#open">Open GOs</a></p>
+      <p><a class="navlink" href="#status">Order Status</a></p>
+      <p><a class="navlink" href="#faq">FAQ</a></p>
+      <p class="notice" style="display:flex; gap:10px; align-items:center">
+        <img src="logo ver flat.png" alt="Retail Therapy PH" style="width:34px;height:34px; border-radius:14px; border:1px solid rgba(35,27,42,.10); background:#fff" />
+        <span>Retail Therapy PH</span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- GO DETAILS + ORDER MODAL -->
+<dialog id="goModal" aria-labelledby="goModalTitle">
+  <div class="modalHead">
+    <div>
+      <p class="small" style="margin:0;color:var(--muted); font-weight:800">Group Order</p>
+      <h3 class="modalTitle" id="goModalTitle">Listing</h3>
+      <div class="meta" id="goModalMeta" style="margin-top:6px"></div>
+    </div>
+    <button class="closeX" type="button" id="closeGo">✕</button>
+  </div>
+  <div class="modalBody">
+    <div class="twoCol">
+      <div class="panel">
+        <h4>Details</h4>
+        <div id="goModalDetails" class="notice" style="margin-top:0"></div>
+        <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
+          <button class="btn btnPrimary" type="button" id="addToCartBtn">Add to cart</button>
+          <button class="btn" type="button" id="exportBtn">Export orders (CSV)</button>
+        </div>
+        <p class="notice">By ordering, you agree to shop policies. This demo stores orders locally on your device.</p>
+      </div>
+      <div class="panel">
+        <h4>Order form</h4>
+        <form id="orderForm">
+          <div class="formGrid">
+            <div>
+              <label for="buyerName">Name</label>
+              <input class="inp" id="buyerName" required placeholder="Your name" />
+            </div>
+            <div>
+              <label for="buyerHandle">Username</label>
+              <input class="inp" id="buyerHandle" placeholder="IG/Twitter/TikTok" />
+            </div>
+            <div class="full">
+              <label for="buyerEmail">Email</label>
+              <input class="inp" id="buyerEmail" type="email" placeholder="you@email.com" required />
+            </div>
+            <div>
+              <label for="buyerQty">Quantity</label>
+              <input class="inp" id="buyerQty" type="number" min="1" value="1" required />
+            </div>
+            <div>
+              <label for="payMethod">Payment</label>
+              <select class="inp" id="payMethod">
+                <option value="GCash">GCash</option>
+                <option value="Bank Transfer">Bank Transfer</option>
+                <option value="PayPal">PayPal</option>
+                <option value="Cash">Cash (meetup)</option>
+              </select>
+            </div>
+            <div class="full">
+              <label for="buyerNotes">Notes</label>
+              <textarea class="inp" id="buyerNotes" rows="3" placeholder="Bias, preferred version, payment proof link, address notes…"></textarea>
+            </div>
+          </div>
+          <div style="display:flex; gap:10px; align-items:center; margin-top:12px; flex-wrap:wrap">
+            <button class="btn btnPrimary" type="submit">Submit order</button>
+            <button class="btn" type="button" id="resetForm">Reset</button>
+            <span class="notice" id="formMsg" role="status"></span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<!-- CREATE GO MODAL -->
+<dialog id="createModal" aria-labelledby="createTitle">
+  <div class="modalHead">
+    <div>
+      <p class="small" style="margin:0;color:var(--muted); font-weight:800">Admin</p>
+      <h3 class="modalTitle" id="createTitle">Create a GO Listing</h3>
+      <div class="notice" style="margin-top:6px">Saved to <b>localStorage</b>. You can remove/replace later.</div>
+    </div>
+    <button class="closeX" type="button" id="closeCreate">✕</button>
+  </div>
+  <div class="modalBody">
+    <form id="createForm">
+      <div class="formGrid">
+        <div>
+          <label for="cGroup">Group / Artist</label>
+          <input class="inp" id="cGroup" required placeholder="e.g., SEVENTEEN" />
+        </div>
+        <div>
+          <label for="cItem">Item</label>
+          <input class="inp" id="cItem" required placeholder="e.g., Album (Set), Merch" />
+        </div>
+        <div>
+          <label for="cPrice">Price (PHP)</label>
+          <input class="inp" id="cPrice" type="number" min="0" required placeholder="e.g., 1299" />
+        </div>
+        <div>
+          <label for="cSlots">Slots (target)</label>
+          <input class="inp" id="cSlots" type="number" min="1" value="30" required />
+        </div>
+        <div>
+          <label for="cTaken">Taken (current)</label>
+          <input class="inp" id="cTaken" type="number" min="0" value="0" required />
+        </div>
+        <div>
+          <label for="cStatus">Status</label>
+          <select class="inp" id="cStatus">
+            <option value="open">Open</option>
+            <option value="closing">Closing soon</option>
+            <option value="closed">Closed</option>
+          </select>
+        </div>
+        <div>
+          <label for="cCutoff">Cut‑off date</label>
+          <input class="inp" id="cCutoff" type="date" required />
+        </div>
+        <div>
+          <label for="cEta">ETA</label>
+          <input class="inp" id="cEta" placeholder="e.g., 3–5 weeks" />
+        </div>
+        <div class="full">
+          <label for="cBenefits">Benefits / Inclusions</label>
+          <input class="inp" id="cBenefits" placeholder="e.g., POB + fanmade freebies" />
+        </div>
+        <div class="full">
+          <label for="cNotes">Notes / Policies</label>
+          <textarea class="inp" id="cNotes" rows="3" placeholder="DP/FP deadlines, shipping fee estimates, version notes, cancellation policy…"></textarea>
+        </div>
+      </div>
+      <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap; align-items:center">
+        <button class="btn btnPrimary" type="submit">Create listing</button>
+        <button class="btn" type="button" id="clearLocal">Clear saved data</button>
+        <span class="notice" id="createMsg" role="status"></span>
+      </div>
+    </form>
+  </div>
+</dialog>
+
+<!-- CART DRAWER -->
+<aside class="drawer" id="drawer" aria-label="Cart drawer" aria-hidden="true">
+  <div class="drawerHead">
+    <h3>Cart</h3>
+    <button class="closeX" type="button" id="closeDrawer">✕</button>
+  </div>
+  <div class="drawerBody">
+    <div id="cartList"></div>
+    <p class="notice" style="margin-top:10px">This demo cart is local. For real checkout, connect payment links and order IDs.</p>
+  </div>
+  <div class="drawerFoot">
+    <div class="totals">
+      <div class="row"><span>Items</span><strong id="tItems">0</strong></div>
+      <div class="row"><span>Subtotal</span><strong id="tSubtotal">₱0</strong></div>
+      <div class="row"><span>Est. local shipping</span><strong id="tShip">₱0</strong></div>
+      <div class="row"><span>Total (est.)</span><strong id="tTotal">₱0</strong></div>
+    </div>
+    <div style="display:flex; gap:10px; margin-top:12px">
+      <button class="btn btnPrimary" type="button" id="checkoutBtn">Proceed</button>
+      <button class="btn" type="button" id="clearCartBtn">Clear</button>
+    </div>
+    <p class="notice" id="checkoutMsg" role="status" style="margin-top:10px"></p>
+  </div>
+</aside>
+
+<script>
+  /*********************************************************************
+   * Retail Therapy PH — Single-file starter
+   *********************************************************************/
+
+  // --- Utilities
+  const peso = (n) => new Intl.NumberFormat('en-PH', { style:'currency', currency:'PHP', maximumFractionDigits:0 }).format(n || 0);
+  const uid = () => Math.random().toString(16).slice(2) + Date.now().toString(16);
+  const daysUntil = (dateStr) => {
+    const t = new Date(dateStr + 'T23:59:59');
+    const now = new Date();
+    const diff = t.getTime() - now.getTime();
+    return Math.ceil(diff / (1000*60*60*24));
+  };
+
+  function futureDate(days){
+    const d = new Date();
+    d.setDate(d.getDate() + days);
+    return d.toISOString().slice(0,10);
+  }
+  function pastDate(days){
+    const d = new Date();
+    d.setDate(d.getDate() - days);
+    return d.toISOString().slice(0,10);
+  }
+
+  // --- Sample listings (edit these)
+  const seedListings = [
+    {
+      id: 'go-1',
+      createdAt: Date.now() - 1000*60*60*24*6,
+      group: 'TWICE',
+      item: 'Mini Album (Random Ver.)',
+      price: 1299,
+      slots: 40,
+      taken: 17,
+      status: 'open',
+      cutoff: futureDate(10),
+      eta: '3–5 weeks after cut‑off',
+      benefits: 'POB + fanmade freebies',
+      notes: 'DP: ₱500 within 24hrs. Balance before EMS arrives. No cancellation after DP.'
+    },
+    {
+      id: 'go-2',
+      createdAt: Date.now() - 1000*60*60*24*2,
+      group: 'SEVENTEEN',
+      item: 'Photocard Set (Member Choice)',
+      price: 499,
+      slots: 60,
+      taken: 52,
+      status: 'closing',
+      cutoff: futureDate(2),
+      eta: '2–3 weeks',
+      benefits: 'Free top-loader + sleeve',
+      notes: 'Cut‑off is strict to secure member claims. Late payments get auto-cancelled.'
+    },
+    {
+      id: 'go-3',
+      createdAt: Date.now() - 1000*60*60*24*12,
+      group: 'Stray Kids',
+      item: 'Official Merch (Lightstick)',
+      price: 2399,
+      slots: 25,
+      taken: 25,
+      status: 'closed',
+      cutoff: pastDate(1),
+      eta: 'Arrived',
+      benefits: 'Bubble wrap + box',
+      notes: 'Closed. Thank you for joining!'
+    }
+  ];
+
+  // --- Storage keys
+  const LS_LISTINGS = 'retailtherapy:listings:v1';
+  const LS_ORDERS = 'retailtherapy:orders:v1';
+  const LS_CART = 'retailtherapy:cart:v1';
+
+  // --- State
+  let listings = loadListings();
+  let orders = loadOrders();
+  let cart = loadCart();
+  let activeListingId = null;
+
+  // --- DOM refs
+  const grid = document.querySelector('#grid');
+  const search = document.querySelector('#search');
+  const statusFilter = document.querySelector('#statusFilter');
+  const sortBy = document.querySelector('#sortBy');
+
+  const goModal = document.querySelector('#goModal');
+  const goModalTitle = document.querySelector('#goModalTitle');
+  const goModalMeta = document.querySelector('#goModalMeta');
+  const goModalDetails = document.querySelector('#goModalDetails');
+
+  const orderForm = document.querySelector('#orderForm');
+  const buyerName = document.querySelector('#buyerName');
+  const buyerHandle = document.querySelector('#buyerHandle');
+  const buyerEmail = document.querySelector('#buyerEmail');
+  const buyerQty = document.querySelector('#buyerQty');
+  const payMethod = document.querySelector('#payMethod');
+  const buyerNotes = document.querySelector('#buyerNotes');
+  const formMsg = document.querySelector('#formMsg');
+
+  const createModal = document.querySelector('#createModal');
+  const createForm = document.querySelector('#createForm');
+  const createMsg = document.querySelector('#createMsg');
+
+  const drawer = document.querySelector('#drawer');
+  const cartBtn = document.querySelector('#cartBtn');
+  const closeDrawer = document.querySelector('#closeDrawer');
+  const cartList = document.querySelector('#cartList');
+  const cartCount = document.querySelector('#cartCount');
+
+  const tItems = document.querySelector('#tItems');
+  const tSubtotal = document.querySelector('#tSubtotal');
+  const tShip = document.querySelector('#tShip');
+  const tTotal = document.querySelector('#tTotal');
+  const checkoutMsg = document.querySelector('#checkoutMsg');
+
+  const kpiOpen = document.querySelector('#kpiOpen');
+  const kpiSoon = document.querySelector('#kpiSoon');
+  const kpiItems = document.querySelector('#kpiItems');
+  const kpiEst = document.querySelector('#kpiEst');
+
+  // Order status refs
+  const statusEmail = document.querySelector('#statusEmail');
+  const statusBtn = document.querySelector('#statusBtn');
+  const statusClear = document.querySelector('#statusClear');
+  const statusResults = document.querySelector('#statusResults');
+  const statusMsg = document.querySelector('#statusMsg');
+
+  // --- Init
+  render();
+  updateKpis();
+  runTests();
+
+  // --- Events
+  document.querySelector('#browseBtn').addEventListener('click', () => {
+    document.querySelector('#open').scrollIntoView({behavior:'smooth'});
+    search.focus();
+  });
+
+  document.querySelector('#newGoBtn').addEventListener('click', () => openCreate());
+  document.querySelector('#closeGo').addEventListener('click', () => goModal.close());
+  document.querySelector('#closeCreate').addEventListener('click', () => createModal.close());
+  document.querySelector('#resetForm').addEventListener('click', () => { orderForm.reset(); buyerQty.value = 1; formMsg.textContent = ''; });
+
+  document.querySelector('#addToCartBtn').addEventListener('click', () => {
+    if(!activeListingId) return;
+    addToCart(activeListingId, 1);
+    toast(formMsg, 'Added to cart ✅');
+  });
+
+  document.querySelector('#exportBtn').addEventListener('click', () => {
+    if(!activeListingId) return;
+    exportOrdersCsv(activeListingId);
+  });
+
+  search.addEventListener('input', render);
+  statusFilter.addEventListener('change', render);
+  sortBy.addEventListener('change', render);
+
+  cartBtn.addEventListener('click', () => toggleDrawer(true));
+  closeDrawer.addEventListener('click', () => toggleDrawer(false));
+  document.querySelector('#clearCartBtn').addEventListener('click', () => { cart = []; saveCart(); renderCart(); updateKpis(); });
+
+  document.querySelector('#checkoutBtn').addEventListener('click', () => {
+    if(cart.length === 0) return toast(checkoutMsg, 'Your cart is empty.' , true);
+    toast(checkoutMsg, 'Demo mode: connect payments + order IDs for real checkout. ✅');
+  });
+
+  // Order status
+  statusBtn.addEventListener('click', () => renderStatus());
+  statusClear.addEventListener('click', () => {
+    statusEmail.value = '';
+    statusResults.innerHTML = '<p class="notice" style="margin:0">No lookup yet.</p>';
+    statusMsg.textContent = '';
+  });
+  statusEmail.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter'){
+      e.preventDefault();
+      renderStatus();
+    }
+  });
+
+  // create listing
+  createForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const newItem = {
+      id: 'go-' + uid(),
+      createdAt: Date.now(),
+      group: val('#cGroup'),
+      item: val('#cItem'),
+      price: Number(val('#cPrice')),
+      slots: Number(val('#cSlots')),
+      taken: Number(val('#cTaken')),
+      status: val('#cStatus'),
+      cutoff: val('#cCutoff'),
+      eta: val('#cEta'),
+      benefits: val('#cBenefits'),
+      notes: val('#cNotes')
+    };
+    listings = [newItem, ...listings];
+    saveListings();
+    toast(createMsg, 'Listing created ✅');
+    createForm.reset();
+    createModal.close();
+    render();
+    updateKpis();
+    runTests();
+  });
+
+  document.querySelector('#clearLocal').addEventListener('click', () => {
+    localStorage.removeItem(LS_LISTINGS);
+    localStorage.removeItem(LS_ORDERS);
+    localStorage.removeItem(LS_CART);
+    listings = seedListings.slice();
+    orders = {};
+    cart = [];
+    saveListings(); saveOrders(); saveCart();
+    toast(createMsg, 'Cleared saved data ✅');
+    render(); renderCart(); updateKpis();
+    runTests();
+    statusResults.innerHTML = '<p class="notice" style="margin:0">No lookup yet.</p>';
+  });
+
+  // order submit
+  orderForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if(!activeListingId) return;
+
+    const listing = listings.find(x => x.id === activeListingId);
+    if(!listing) return;
+
+    const qty = Number(buyerQty.value || 1);
+    const isClosed = listing.status === 'closed' || daysUntil(listing.cutoff) < 0;
+    if(isClosed) return toast(formMsg, 'This GO is closed. Please join another listing.', true);
+
+    const row = {
+      id: uid(),
+      ts: new Date().toISOString(),
+      name: buyerName.value.trim(),
+      handle: buyerHandle.value.trim(),
+      email: buyerEmail.value.trim(),
+      qty,
+      payment: payMethod.value,
+      notes: buyerNotes.value.trim()
+    };
+
+    orders[activeListingId] = orders[activeListingId] || [];
+    orders[activeListingId].push(row);
+    saveOrders();
+
+    listing.taken = Math.min(listing.slots, listing.taken + qty);
+    if(listing.taken >= listing.slots && listing.status !== 'closed') listing.status = 'closing';
+    saveListings();
+
+    toast(formMsg, 'Order saved ✅ (local demo)');
+    orderForm.reset();
+    buyerQty.value = 1;
+
+    render();
+    updateKpis();
+    runTests();
+  });
+
+  // Keyboard shortcuts
+  window.addEventListener('keydown', (e) => {
+    if(e.key === '/' && document.activeElement?.tagName !== 'INPUT' && document.activeElement?.tagName !== 'TEXTAREA'){
+      e.preventDefault();
+      search.focus();
+    }
+    if(e.key === 'Escape'){
+      if(drawer.classList.contains('open')) toggleDrawer(false);
+      if(goModal.open) goModal.close();
+      if(createModal.open) createModal.close();
+    }
+  });
+
+  // Close drawer on outside click
+  document.addEventListener('click', (e) => {
+    const inside = drawer.contains(e.target) || cartBtn.contains(e.target);
+    if(!inside && drawer.classList.contains('open')) toggleDrawer(false);
+  });
+
+  // --- Rendering
+  function render(){
+    const q = (search.value || '').toLowerCase().trim();
+    const status = statusFilter.value;
+    const sorted = sortListings(applyFilters(listings, q, status), sortBy.value);
+
+    grid.innerHTML = '';
+
+    if(sorted.length === 0){
+      grid.innerHTML = `<div class="card" style="grid-column:1/-1; padding:16px; color:var(--muted)">No listings found. Try a different keyword.</div>`;
+      return;
+    }
+
+    for(const item of sorted){
+      const d = daysUntil(item.cutoff);
+      const computedStatus = computeStatus(item, d);
+      const pct = Math.min(100, Math.round((item.taken / item.slots) * 100));
+
+      const tile = document.createElement('article');
+      tile.className = 'tile';
+      tile.innerHTML = `
+        <div class="thumb">
+          <div class="badge">
+            <span class="statusDot ${computedStatus}"></span>
+            <span>${labelStatus(computedStatus)}</span>
+          </div>
+        </div>
+        <div class="tileBody">
+          <div>
+            <h3>${escapeHtml(item.group)} — ${escapeHtml(item.item)}</h3>
+            <div class="meta">
+              <span>Cut‑off: <code>${escapeHtml(item.cutoff)}</code></span>
+              <span>ETA: <code>${escapeHtml(item.eta || 'TBA')}</code></span>
+            </div>
+          </div>
+
+          <div class="progressWrap" aria-label="Slots progress">
+            <div class="bar" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100">
+              <i style="width:${pct}%"></i>
+            </div>
+            <span class="pct">${pct}%</span>
+          </div>
+
+          <div class="meta">
+            <span>Slots: <code>${item.taken}/${item.slots}</code></span>
+            <span>Benefits: <code>${escapeHtml(item.benefits || '—')}</code></span>
+          </div>
+        </div>
+        <div class="tileFooter">
+          <div>
+            <div class="price">${peso(item.price)}</div>
+            <div class="small">per item • ${d >= 0 ? `${d} day(s) left` : 'ended'}</div>
+          </div>
+          <div style="display:flex; gap:8px">
+            <button class="btn" type="button" data-view="${item.id}">View</button>
+            <button class="btn btnPrimary" type="button" data-cart="${item.id}">Add</button>
+          </div>
+        </div>
+      `;
+      grid.appendChild(tile);
+    }
+
+    // bind buttons
+    grid.querySelectorAll('[data-view]').forEach(btn =>
+      btn.addEventListener('click', () => openGo(btn.dataset.view))
+    );
+
+    grid.querySelectorAll('[data-cart]').forEach(btn =>
+      btn.addEventListener('click', () => { addToCart(btn.dataset.cart, 1); })
+    );
+
+    renderCart();
+  }
+
+  function applyFilters(list, q, status){
+    return list.filter(x => {
+      const d = daysUntil(x.cutoff);
+      const s = computeStatus(x, d);
+      const hay = `${x.group} ${x.item} ${x.benefits||''} ${x.notes||''}`.toLowerCase();
+      const matchesQ = !q || hay.includes(q);
+      const matchesStatus = status === 'all' ? true : (s === status);
+      return matchesQ && matchesStatus;
+    });
+  }
+
+  function sortListings(list, mode){
+    const copy = list.slice();
+    if(mode === 'cutoffSoon') return copy.sort((a,b) => daysUntil(a.cutoff) - daysUntil(b.cutoff));
+    if(mode === 'newest') return copy.sort((a,b) => (b.createdAt||0) - (a.createdAt||0));
+    if(mode === 'priceLow') return copy.sort((a,b) => (a.price||0) - (b.price||0));
+    if(mode === 'priceHigh') return copy.sort((a,b) => (b.price||0) - (a.price||0));
+    return copy;
+  }
+
+  function computeStatus(item, days){
+    if(item.status === 'closed' || days < 0) return 'closed';
+    if(item.status === 'closing' || days <= 3) return 'closing';
+    return 'open';
+  }
+
+  function labelStatus(s){
+    if(s==='open') return 'Open';
+    if(s==='closing') return 'Closing soon';
+    return 'Closed';
+  }
+
+  function openGo(id){
+    const item = listings.find(x => x.id === id);
+    if(!item) return;
+    activeListingId = id;
+
+    const d = daysUntil(item.cutoff);
+    const s = computeStatus(item, d);
+
+    goModalTitle.textContent = `${item.group} — ${item.item}`;
+    goModalMeta.innerHTML = `
+      <span>Price: <code>${peso(item.price)}</code></span>
+      <span>Status: <code>${labelStatus(s)}</code></span>
+      <span>Slots: <code>${item.taken}/${item.slots}</code></span>
+      <span>Cut‑off: <code>${item.cutoff}</code></span>
+    `;
+
+    goModalDetails.innerHTML = `
+      <div class="notice" style="margin:0">
+        <p style="margin:0 0 8px"><b>Benefits:</b> ${escapeHtml(item.benefits || '—')}</p>
+        <p style="margin:0 0 8px"><b>ETA:</b> ${escapeHtml(item.eta || 'TBA')}</p>
+        <p style="margin:0 0 8px"><b>Notes:</b> ${escapeHtml(item.notes || '—')}</p>
+        <p style="margin:0"><b>Time left:</b> ${d >= 0 ? `${d} day(s)` : 'ended'}</p>
+      </div>
+    `;
+
+    buyerQty.value = 1;
+    formMsg.textContent = '';
+
+    goModal.showModal();
+  }
+
+  function openCreate(){
+    document.querySelector('#cCutoff').value = futureDate(7);
+    createMsg.textContent = '';
+    createModal.showModal();
+  }
+
+  // --- Order Status
+  function renderStatus(){
+    const email = (statusEmail.value || '').trim().toLowerCase();
+    statusMsg.textContent = '';
+
+    if(!email){
+      statusResults.innerHTML = '<p class="notice" style="margin:0">Please enter an email.</p>';
+      return;
+    }
+
+    const hits = [];
+    for(const listing of listings){
+      const rows = orders[listing.id] || [];
+      for(const o of rows){
+        if(String(o.email || '').trim().toLowerCase() === email){
+          hits.push({ listing, order: o });
+        }
+      }
+    }
+
+    if(hits.length === 0){
+      statusResults.innerHTML = '<p class="notice" style="margin:0">No orders found for that email (on this device).</p>';
+      return;
+    }
+
+    hits.sort((a,b) => String(b.order.ts).localeCompare(String(a.order.ts)));
+
+    statusResults.innerHTML = '';
+    for(const h of hits){
+      const d = daysUntil(h.listing.cutoff);
+      const s = computeStatus(h.listing, d);
+      const el = document.createElement('div');
+      el.className = 'statusItem';
+      el.innerHTML = `
+        <b>${escapeHtml(h.listing.group)} — ${escapeHtml(h.listing.item)}</b>
+        <div class="statusChips">
+          <span class="chip">status:${labelStatus(s)}</span>
+          <span class="chip">qty:${escapeHtml(h.order.qty)}</span>
+          <span class="chip">pay:${escapeHtml(h.order.payment)}</span>
+          <span class="chip">cutoff:${escapeHtml(h.listing.cutoff)}</span>
+        </div>
+        <div class="notice" style="margin:0">
+          <div><b>Ordered:</b> ${new Date(h.order.ts).toLocaleString()}</div>
+          ${h.order.notes ? `<div><b>Notes:</b> ${escapeHtml(h.order.notes)}</div>` : ''}
+        </div>
+      `;
+      statusResults.appendChild(el);
+    }
+
+    statusMsg.textContent = `Found ${hits.length} order(s).`;
+  }
+
+  // --- Cart
+  function addToCart(listingId, qty){
+    const listing = listings.find(x => x.id === listingId);
+    if(!listing) return;
+
+    const existing = cart.find(x => x.listingId === listingId);
+    if(existing) existing.qty += qty;
+    else cart.push({ listingId, qty });
+
+    saveCart();
+    renderCart();
+    updateKpis();
+    toggleDrawer(true);
+  }
+
+  function renderCart(){
+    cartList.innerHTML = '';
+
+    const items = cart
+      .map(ci => ({...ci, listing: listings.find(l => l.id === ci.listingId)}))
+      .filter(ci => ci.listing);
+
+    if(items.length === 0){
+      cartList.innerHTML = `<p class="notice">Your cart is empty.</p>`;
+    } else {
+      for(const ci of items){
+        const row = document.createElement('div');
+        row.className = 'cartItem';
+        const subtotal = (ci.listing.price || 0) * (ci.qty || 0);
+        row.innerHTML = `
+          <div>
+            <b>${escapeHtml(ci.listing.group)} — ${escapeHtml(ci.listing.item)}</b>
+            <span>${peso(ci.listing.price)} each</span>
+          </div>
+          <div class="qtyRow">
+            <button class="qtyBtn" type="button" data-dec="${ci.listingId}">−</button>
+            <span style="min-width:22px; text-align:center; font-weight:900">${ci.qty}</span>
+            <button class="qtyBtn" type="button" data-inc="${ci.listingId}">+</button>
+          </div>
+          <div style="grid-column:1/-1; display:flex; justify-content:space-between; gap:10px">
+            <span class="small">Subtotal</span>
+            <b>${peso(subtotal)}</b>
+          </div>
+        `;
+        cartList.appendChild(row);
+      }
+    }
+
+    cartList.querySelectorAll('[data-inc]').forEach(b => b.addEventListener('click', () => changeQty(b.dataset.inc, +1)));
+    cartList.querySelectorAll('[data-dec]').forEach(b => b.addEventListener('click', () => changeQty(b.dataset.dec, -1)));
+
+    const itemCount = items.reduce((a,x) => a + x.qty, 0);
+    const subtotal = items.reduce((a,x) => a + (x.qty * (x.listing.price||0)), 0);
+    const ship = estimateShipping(itemCount, subtotal);
+    const total = subtotal + ship;
+
+    cartCount.textContent = String(itemCount);
+    tItems.textContent = String(itemCount);
+    tSubtotal.textContent = peso(subtotal);
+    tShip.textContent = peso(ship);
+    tTotal.textContent = peso(total);
+    checkoutMsg.textContent = '';
+
+    kpiItems.textContent = String(itemCount);
+    kpiEst.textContent = peso(total);
+  }
+
+  function changeQty(listingId, delta){
+    const ci = cart.find(x => x.listingId === listingId);
+    if(!ci) return;
+    ci.qty += delta;
+    if(ci.qty <= 0) cart = cart.filter(x => x.listingId !== listingId);
+    saveCart();
+    renderCart();
+    updateKpis();
+  }
+
+  function estimateShipping(itemCount, subtotal){
+    if(itemCount === 0) return 0;
+    const base = 80;
+    const perItem = 10;
+    const fee = base + (itemCount * perItem);
+    return Math.min(220, fee);
+  }
+
+  function toggleDrawer(open){
+    drawer.classList.toggle('open', !!open);
+    drawer.setAttribute('aria-hidden', open ? 'false' : 'true');
+  }
+
+  // --- KPIs
+  function updateKpis(){
+    const openCount = listings.filter(x => computeStatus(x, daysUntil(x.cutoff)) === 'open').length;
+    const soonCount = listings.filter(x => computeStatus(x, daysUntil(x.cutoff)) === 'closing').length;
+    kpiOpen.textContent = String(openCount);
+    kpiSoon.textContent = String(soonCount);
+    renderCart();
+  }
+
+  // --- Storage
+  function loadListings(){
+    const raw = localStorage.getItem(LS_LISTINGS);
+    if(!raw){
+      localStorage.setItem(LS_LISTINGS, JSON.stringify(seedListings));
+      return seedListings.slice();
+    }
+    try{ return JSON.parse(raw) || seedListings.slice(); }
+    catch{ return seedListings.slice(); }
+  }
+  function saveListings(){ localStorage.setItem(LS_LISTINGS, JSON.stringify(listings)); }
+
+  function loadOrders(){
+    const raw = localStorage.getItem(LS_ORDERS);
+    if(!raw){ localStorage.setItem(LS_ORDERS, JSON.stringify({})); return {}; }
+    try{ return JSON.parse(raw) || {}; } catch { return {}; }
+  }
+  function saveOrders(){ localStorage.setItem(LS_ORDERS, JSON.stringify(orders)); }
+
+  function loadCart(){
+    const raw = localStorage.getItem(LS_CART);
+    if(!raw){ localStorage.setItem(LS_CART, JSON.stringify([])); return []; }
+    try{ return JSON.parse(raw) || []; } catch { return []; }
+  }
+  function saveCart(){ localStorage.setItem(LS_CART, JSON.stringify(cart)); }
+
+  // --- Export CSV
+  function exportOrdersCsv(listingId){
+    const list = orders[listingId] || [];
+    const listing = listings.find(x => x.id === listingId);
+    const header = ['timestamp','name','username','email','qty','payment','notes'];
+
+    const rows = [header.join(',')].concat(
+      list.map(o => header.map(k => csvCell(o[keyMap(k)] || '')).join(','))
+    );
+
+    // FIX: use "\n" (a real newline) in the string literal
+    const blob = new Blob([rows.join('\n')], {type:'text/csv;charset=utf-8;'});
+    const a = document.createElement('a');
+    const fileName = `${(listing?.group||'GO')}-${(listing?.item||'orders')}`.replace(/[^a-z0-9\-_]+/gi,'_') + '.csv';
+    a.href = URL.createObjectURL(blob);
+    a.download = fileName;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  }
+
+  function keyMap(k){
+    return ({
+      timestamp:'ts',
+      name:'name',
+      username:'handle',
+      email:'email',
+      qty:'qty',
+      payment:'payment',
+      notes:'notes'
+    })[k] || k;
+  }
+
+  function csvCell(v){
+    const s = String(v ?? '');
+    // FIX: include newline in regex without creating an invalid token
+    if(/[\",\n]/.test(s)) return '"' + s.replace(/"/g,'""') + '"';
+    return s;
+  }
+
+  // --- Helpers
+  function val(sel){ return document.querySelector(sel).value.trim(); }
+  function toast(el, msg, isWarn=false){
+    el.textContent = msg;
+    el.style.color = isWarn ? 'var(--warn)' : 'var(--muted)';
+    clearTimeout(el._t);
+    el._t = setTimeout(() => { el.textContent = ''; el.style.color='var(--muted)'; }, 2600);
+  }
+
+  function escapeHtml(str){
+    return String(str ?? '').replace(/[&<>\"]/g, (c) => ({
+      '&':'&amp;',
+      '<':'&lt;',
+      '>':'&gt;',
+      '"':'&quot;'
+    })[c] || c);
+  }
+
+  // --- Mini test runner
+  function runTests(){
+    const dot = document.getElementById('testDot');
+    const label = document.getElementById('testLabel');
+
+    const results = [];
+    const test = (name, fn) => {
+      try{ fn(); results.push({name, ok:true}); }
+      catch(err){ results.push({name, ok:false, err}); }
+    };
+    const assert = (cond, msg) => { if(!cond) throw new Error(msg || 'Assertion failed'); };
+
+    test('render() does not throw', () => { render(); assert(true); });
+    test('escapeHtml encodes special chars', () => {
+      const out = escapeHtml('<a & "b">');
+      assert(out.includes('&lt;') && out.includes('&amp;') && out.includes('&quot;') && out.includes('&gt;'), 'escapeHtml should encode');
+    });
+    test('csvCell quotes commas/newlines/quotes', () => {
+      assert(csvCell('a,b') === '"a,b"', 'comma should quote');
+      assert(csvCell('a\n b').startsWith('"'), 'newline should quote');
+      assert(csvCell('a"b') === '"a""b"', 'quotes should double');
+    });
+    test('computeStatus respects closed + past cutoff', () => {
+      assert(computeStatus({status:'closed'}, 10) === 'closed', 'closed should be closed');
+      assert(computeStatus({status:'open'}, -1) === 'closed', 'past cutoff should be closed');
+    });
+    test('computeStatus marks closing when <=3 days', () => {
+      assert(computeStatus({status:'open'}, 3) === 'closing', '3 days should be closing');
+      assert(computeStatus({status:'open'}, 4) === 'open', '4 days should be open');
+    });
+    test('exportOrdersCsv row join uses \\n', () => {
+      const rows = ['a,b','c,d'];
+      const joined = rows.join('\n');
+      assert(joined === 'a,b\nc,d', 'rows should join with \\n');
+    });
+
+    const failed = results.filter(r => !r.ok);
+    if(failed.length){
+      console.group('Retail Therapy PH self-tests (FAILED)');
+      failed.forEach(f => console.error(f.name, f.err));
+      console.groupEnd();
+      if(dot) dot.classList.add('fail');
+      if(label) label.textContent = `${failed.length} test(s) failed`;
+    } else {
+      console.info('Retail Therapy PH self-tests passed ✅');
+      if(dot) dot.classList.remove('fail');
+      if(label) label.textContent = 'All tests passed';
+    }
+  }
+</script>
+
+</body>
+</html>
